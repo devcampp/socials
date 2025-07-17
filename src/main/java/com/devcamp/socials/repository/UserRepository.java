@@ -5,6 +5,7 @@ import com.devcamp.socials.entity.UserEntity;
 import java.sql.Date;
 import java.util.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +23,7 @@ public class UserRepository {
   }
 
   private Optional<UserEntity> findBy(String column, Object value) {
-    final String SQL =
+    final String sql =
         """
       SELECT u.id, u.first_name, u.last_name, u.username, u.password, u.birth_date, u.enabled,
              r.id as role_id, r.name as role_name
@@ -36,7 +37,7 @@ public class UserRepository {
     Map<String, Object> params = Map.of("value", value);
 
     return namedParameterJdbcTemplate.query(
-        SQL,
+        sql,
         params,
         rs -> {
           UserEntity user = null;
@@ -69,5 +70,37 @@ public class UserRepository {
 
           return Optional.ofNullable(user);
         });
+  }
+
+  public void save(UserEntity user) {
+    final String insertUserSql =
+        """
+          INSERT INTO users (first_name, last_name, username, password, birth_date, enabled)
+          VALUES (:firstName, :lastName, :username, :password, :birthDate, :enabled)
+          RETURNING id
+          """;
+
+    MapSqlParameterSource params =
+        new MapSqlParameterSource()
+            .addValue("firstName", user.getFirstName())
+            .addValue("lastName", user.getLastName())
+            .addValue("username", user.getUsername())
+            .addValue("password", user.getPassword())
+            .addValue("birthDate", user.getBirthDate())
+            .addValue("enabled", user.getEnabled());
+
+    Long userId = namedParameterJdbcTemplate.queryForObject(insertUserSql, params, Long.class);
+
+    if (user.getRoles() != null && !user.getRoles().isEmpty()) {
+      final String insertRoleSql =
+          "INSERT INTO user_roles (user_id, role_id) VALUES (:userId, :roleId)";
+
+      for (RoleEntity role : user.getRoles()) {
+        MapSqlParameterSource roleParams =
+            new MapSqlParameterSource().addValue("userId", userId).addValue("roleId", role.getId());
+
+        namedParameterJdbcTemplate.update(insertRoleSql, roleParams);
+      }
+    }
   }
 }

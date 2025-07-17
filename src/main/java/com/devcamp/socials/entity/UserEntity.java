@@ -18,7 +18,7 @@ public class UserEntity implements UserDetails {
   private String username;
   private String password;
   private LocalDate birthDate;
-  private boolean enabled;
+  private Boolean enabled;
   private List<RoleEntity> roles;
 
   @Override

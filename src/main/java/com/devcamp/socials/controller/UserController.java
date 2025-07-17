@@ -27,7 +27,7 @@ public class UserController {
         @ApiResponse(responseCode = "404", description = "User with the given ID was not found")
       })
   public ResponseEntity<Response<UserResponse>> getUser(@PathVariable Long id) {
-    UserResponse response = service.getUser(id);
+    UserResponse response = service.getUserRepository(id);
     return ResponseEntity.ok(Response.success(response));
   }
 }
