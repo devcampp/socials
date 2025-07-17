@@ -22,6 +22,8 @@ app:
     - /actuator/health
     - /swagger-ui/**
     - /v3/api-docs/**
+    - /api/v1/auth/sign-in
+    - /api/v1/auth/sign-up
   jwt:
     secret: ${APP_JWT_SECRET}
     expiration: ${APP_JWT_EXPIRATION}
