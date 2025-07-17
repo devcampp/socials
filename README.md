@@ -21,6 +21,7 @@ This project is part of a Highload development course.
     * Make sure the .env file exists and contains the required variables
     * Start the infrastructure with: `docker-compose up -d`
     * Import Postman collection `dev/socials.postman_collection.json`
+    * OpenApi documentation available at `http://localhost:8080/swagger-ui/index.html`
 
 ## Services Overview
 
