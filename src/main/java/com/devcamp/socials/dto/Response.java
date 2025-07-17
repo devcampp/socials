@@ -8,4 +8,9 @@ public record Response<T>(T data, List<Error> errors) {
   public static <T> Response<T> success(T data) {
     return new Response<>(data, null);
   }
+
+  public static <T> Response<T> failure(List<LocalizedMessage> localizedMessages) {
+    return new Response<>(
+        null, localizedMessages.stream().map(l -> new Error(l.title(), l.message())).toList());
+  }
 }
