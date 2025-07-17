@@ -15,10 +15,13 @@ management:
   endpoints:
     web:
       exposure:
-        include: info,health
+        include: health
 
 app:
   white-list:
     - /actuator/health
     - /swagger-ui/**
     - /v3/api-docs/**
+  jwt:
+    secret: ${APP_JWT_SECRET}
+    expiration: ${APP_JWT_EXPIRATION}
