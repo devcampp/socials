@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: socials
+  main:
+    banner-mode: off
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}?currentSchema=${POSTGRES_SCHEMA}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+
+server:
+  port: ${SERVER_PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health
+
+app:
+  white-list:
+    - /actuator/health
+    - /swagger-ui/**
+    - /v3/api-docs/**
