@@ -19,7 +19,7 @@ management:
 
 app:
   white-list:
-    - error
+    - /error
     - /actuator/health
     - /swagger-ui/**
     - /v3/api-docs/**
