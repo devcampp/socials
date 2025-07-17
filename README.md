@@ -26,4 +26,4 @@ This project is part of a Highload development course.
 | Service     | Host Port | Container Port | Username  | Password  | Notes                                           |
 |-------------|-----------|----------------|-----------|-----------|-------------------------------------------------|
 | Postgresql  | 5432      | 5432           | `socials` | `socials` | Database: `socials`, Schema: `socials`          |
-| Application | 8080      |                | `user`    | `user`    | Sign-in url: localhost:8080/api/v1/auth/sign-in |
+| Application | 8080      |                |           |           | Sign-in url: localhost:8080/api/v1/auth/sign-in |
