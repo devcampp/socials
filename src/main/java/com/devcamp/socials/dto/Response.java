@@ -4,4 +4,8 @@ import java.util.List;
 
 public record Response<T>(T data, List<Error> errors) {
   public record Error(String title, String message) {}
+
+  public static <T> Response<T> success(T data) {
+    return new Response<>(data, null);
+  }
 }
