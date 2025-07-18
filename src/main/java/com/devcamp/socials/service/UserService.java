@@ -7,8 +7,7 @@ import com.devcamp.socials.entity.UserEntity;
 import com.devcamp.socials.enums.MessageKey;
 import com.devcamp.socials.exception.ApiException;
 import com.devcamp.socials.mapper.UserMapper;
-import com.devcamp.socials.repository.RoleRepository;
-import com.devcamp.socials.repository.UserRepository;
+import com.devcamp.socials.repository.user.UserRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +21,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
   private final UserRepository userRepository;
-  private final RoleRepository roleRepository;
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -42,8 +40,8 @@ public class UserService implements UserDetailsService {
 
   public void createUser(SignUpRequest request, String encodedPassword) {
     RoleEntity roleEntity =
-        roleRepository
-            .findByName("USER")
+        userRepository
+            .findRoleByName("USER")
             .orElseThrow(
                 () -> {
                   log.error("Internal error, role not found");
@@ -51,6 +49,6 @@ public class UserService implements UserDetailsService {
                 });
 
     UserEntity user = UserMapper.INSTANCE.toEntity(request, encodedPassword, List.of(roleEntity));
-    userRepository.save(user);
+    userRepository.saveUser(user);
   }
 }
