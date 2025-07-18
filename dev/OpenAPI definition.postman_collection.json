@@ -1,0 +1,431 @@
+{
+	"info": {
+		"_postman_id": "c4dfa289-8e41-4766-84e1-dac2d712502c",
+		"name": "OpenAPI definition",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45738119"
+	},
+	"item": [
+		{
+			"name": "api/v1",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "User Sign-Up",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"birthDate\": \"1984-12-01\",\n  \"firstName\": \"tempor commodo ut\",\n  \"lastName\": \"cupidatat enim aliquip\",\n  \"password\": \"aute deserunt in\",\n  \"username\": \"ipsum enim pariatur\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/auth/sign-up",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"sign-up"
+									]
+								},
+								"description": "Register a new user in the system"
+							},
+							"response": [
+								{
+									"name": "User successfully registered",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"birthDate\": \"1984-12-01\",\n  \"firstName\": \"tempor commodo ut\",\n  \"lastName\": \"cupidatat enim aliquip\",\n  \"password\": \"aute deserunt in\",\n  \"username\": \"ipsum enim pariatur\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/auth/sign-up",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"sign-up"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Validation error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"birthDate\": \"1984-12-01\",\n  \"firstName\": \"tempor commodo ut\",\n  \"lastName\": \"cupidatat enim aliquip\",\n  \"password\": \"aute deserunt in\",\n  \"username\": \"ipsum enim pariatur\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/auth/sign-up",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"sign-up"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "User Sign-In",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"password\": \"qui eu\",\n  \"username\": \"occaecat consequat minim ad\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/auth/sign-in",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"sign-in"
+									]
+								},
+								"description": "Authenticate user and return JWT token"
+							},
+							"response": [
+								{
+									"name": "Successfully authenticated",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"password\": \"qui eu\",\n  \"username\": \"occaecat consequat minim ad\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/auth/sign-in",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"sign-in"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"data\": {\n    \"token\": \"nostrud dolore dolore consequat\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"sit Lorem enim\",\n      \"message\": \"ut in\"\n    },\n    {\n      \"title\": \"veniam ut commodo\",\n      \"message\": \"dolore ut esse\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Validation error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"password\": \"qui eu\",\n  \"username\": \"occaecat consequat minim ad\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/auth/sign-in",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"sign-in"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"data\": {\n    \"token\": \"nostrud dolore dolore consequat\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"sit Lorem enim\",\n      \"message\": \"ut in\"\n    },\n    {\n      \"title\": \"veniam ut commodo\",\n      \"message\": \"dolore ut esse\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Invalid username or password.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"password\": \"qui eu\",\n  \"username\": \"occaecat consequat minim ad\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/auth/sign-in",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"sign-in"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"data\": {\n    \"token\": \"nostrud dolore dolore consequat\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"sit Lorem enim\",\n      \"message\": \"ut in\"\n    },\n    {\n      \"title\": \"veniam ut commodo\",\n      \"message\": \"dolore ut esse\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get user profile by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/users/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62100075",
+									"description": "(Required) "
+								}
+							]
+						},
+						"description": "Retrieves the user profile for the given user ID, including basic user information."
+					},
+					"response": [
+						{
+							"name": "User profile retrieved successfully",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/users/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "62100075",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"data\": {\n    \"id\": -14291752,\n    \"firstName\": \"non esse\",\n    \"lastName\": \"pariatur exercitation nisi labore\",\n    \"username\": \"proident aliqua officia nisi\",\n    \"birthDate\": \"1951-02-02\",\n    \"enabled\": false\n  },\n  \"errors\": [\n    {\n      \"title\": \"sint labore\",\n      \"message\": \"dolore\"\n    },\n    {\n      \"title\": \"reprehenderit Excepteur\",\n      \"message\": \"minim voluptate\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "User with the given ID was not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/users/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "62100075",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"data\": {\n    \"id\": -14291752,\n    \"firstName\": \"non esse\",\n    \"lastName\": \"pariatur exercitation nisi labore\",\n    \"username\": \"proident aliqua officia nisi\",\n    \"birthDate\": \"1951-02-02\",\n    \"enabled\": false\n  },\n  \"errors\": [\n    {\n      \"title\": \"sint labore\",\n      \"message\": \"dolore\"\n    },\n    {\n      \"title\": \"reprehenderit Excepteur\",\n      \"message\": \"minim voluptate\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
