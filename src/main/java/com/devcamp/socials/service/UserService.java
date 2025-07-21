@@ -39,7 +39,7 @@ public class UserService implements UserDetailsService {
   }
 
   public void createUser(SignUpRequest request, String encodedPassword) {
-    RoleEntity roleEntity =
+    RoleEntity role =
         userRepository
             .findRoleByName("USER")
             .orElseThrow(
@@ -48,7 +48,12 @@ public class UserService implements UserDetailsService {
                   return new ApiException(MessageKey.INTERNAL_ERROR);
                 });
 
-    UserEntity user = UserMapper.INSTANCE.toEntity(request, encodedPassword, List.of(roleEntity));
+    UserEntity user = UserMapper.INSTANCE.toEntity(request, encodedPassword, List.of(role));
     userRepository.saveUser(user);
+  }
+
+  public List<UserResponse> getUsers(String firstName, String lastName) {
+    List<UserEntity> users = userRepository.getUsers(firstName, lastName);
+    return users.stream().map(UserMapper.INSTANCE::toDto).toList();
   }
 }

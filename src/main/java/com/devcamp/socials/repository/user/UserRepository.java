@@ -9,7 +9,6 @@ import com.devcamp.socials.exception.ApiException;
 import java.util.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -66,6 +65,23 @@ public class UserRepository {
     } catch (Exception e) {
       log.error("Error finding role by name: {}", name, e);
       return Optional.empty();
+    }
+  }
+
+  public List<UserEntity> getUsers(String firstName, String lastName) {
+    log.debug("Getting users by first name: {} and last name: {}", firstName, lastName);
+
+    try {
+      MapSqlParameterSource params =
+          new MapSqlParameterSource()
+              .addValue("firstName", firstName + "%")
+              .addValue("lastName", lastName + "%");
+
+      return namedParameterJdbcTemplate.query(
+          SEARCH_USERS_SQL, params, new UsersResultSetExtractor());
+    } catch (Exception e) {
+      log.error("Error getting users by first name: {} and last name: {}", firstName, lastName, e);
+      return Collections.emptyList();
     }
   }
 
