@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "773c5f87-cea8-46c3-bb82-aca0e5585c68",
+		"_postman_id": "a2eec850-2efe-4a14-ac35-b8315625c57f",
 		"name": "OpenAPI definition",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "45738119"
@@ -24,7 +24,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"birthDate\": \"1961-02-16\",\n  \"firstName\": \"{{$randomFirstName}}\",\n  \"lastName\": \"{{$randomLastName}}\",\n  \"password\": \"test\",\n  \"username\": \"test\"\n}",
+									"raw": "{\n  \"birthDate\": \"1948-04-01\",\n  \"firstName\": \"laboris quis\",\n  \"lastName\": \"id deserunt veniam irure\",\n  \"password\": \"exercitation et dolore\",\n  \"username\": \"aliqua Excepteur nisi Lorem et\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -53,7 +53,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"birthDate\": \"1961-02-16\",\n  \"firstName\": \"magna minim voluptate nulla esse\",\n  \"lastName\": \"incididunt elit\",\n  \"password\": \"occaecat enim Lorem\",\n  \"username\": \"fugiat dolore labore\"\n}",
+											"raw": "{\n  \"birthDate\": \"1948-04-01\",\n  \"firstName\": \"laboris quis\",\n  \"lastName\": \"id deserunt veniam irure\",\n  \"password\": \"exercitation et dolore\",\n  \"username\": \"aliqua Excepteur nisi Lorem et\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -92,7 +92,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"birthDate\": \"1961-02-16\",\n  \"firstName\": \"magna minim voluptate nulla esse\",\n  \"lastName\": \"incididunt elit\",\n  \"password\": \"occaecat enim Lorem\",\n  \"username\": \"fugiat dolore labore\"\n}",
+											"raw": "{\n  \"birthDate\": \"1948-04-01\",\n  \"firstName\": \"laboris quis\",\n  \"lastName\": \"id deserunt veniam irure\",\n  \"password\": \"exercitation et dolore\",\n  \"username\": \"aliqua Excepteur nisi Lorem et\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -176,7 +176,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"password\": \"esse ut\",\n  \"username\": \"laboris in enim qui l\"\n}",
+											"raw": "{\n  \"password\": \"et\",\n  \"username\": \"cupidatat nostrud\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -206,7 +206,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"data\": {\n    \"token\": \"fugiat dolor labore cillum\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"pariatur quis consectetur\",\n      \"message\": \"tempor ut\"\n    },\n    {\n      \"title\": \"ullamco veniam labore\",\n      \"message\": \"nulla fugiat laborum\"\n    }\n  ]\n}"
+									"body": "{\n  \"data\": {\n    \"token\": \"voluptate\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"mollit et minim\",\n      \"message\": \"et e\"\n    },\n    {\n      \"title\": \"irure cupidatat\",\n      \"message\": \"culpa velit aliquip\"\n    }\n  ]\n}"
 								},
 								{
 									"name": "Validation error",
@@ -220,7 +220,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"password\": \"esse ut\",\n  \"username\": \"laboris in enim qui l\"\n}",
+											"raw": "{\n  \"password\": \"et\",\n  \"username\": \"cupidatat nostrud\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -250,7 +250,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"data\": {\n    \"token\": \"fugiat dolor labore cillum\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"pariatur quis consectetur\",\n      \"message\": \"tempor ut\"\n    },\n    {\n      \"title\": \"ullamco veniam labore\",\n      \"message\": \"nulla fugiat laborum\"\n    }\n  ]\n}"
+									"body": "{\n  \"data\": {\n    \"token\": \"voluptate\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"mollit et minim\",\n      \"message\": \"et e\"\n    },\n    {\n      \"title\": \"irure cupidatat\",\n      \"message\": \"culpa velit aliquip\"\n    }\n  ]\n}"
 								},
 								{
 									"name": "Invalid username or password.",
@@ -264,7 +264,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"password\": \"esse ut\",\n  \"username\": \"laboris in enim qui l\"\n}",
+											"raw": "{\n  \"password\": \"et\",\n  \"username\": \"cupidatat nostrud\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -294,17 +294,17 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"data\": {\n    \"token\": \"fugiat dolor labore cillum\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"pariatur quis consectetur\",\n      \"message\": \"tempor ut\"\n    },\n    {\n      \"title\": \"ullamco veniam labore\",\n      \"message\": \"nulla fugiat laborum\"\n    }\n  ]\n}"
+									"body": "{\n  \"data\": {\n    \"token\": \"voluptate\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"mollit et minim\",\n      \"message\": \"et e\"\n    },\n    {\n      \"title\": \"irure cupidatat\",\n      \"message\": \"culpa velit aliquip\"\n    }\n  ]\n}"
 								}
 							]
 						}
 					]
 				},
 				{
-					"name": "users",
+					"name": "profiles",
 					"item": [
 						{
-							"name": "Getting users profile, filters: first name, last name",
+							"name": "Search user profiles with filters",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -314,33 +314,33 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/api/v1/users?firstName=С&lastName=П",
+									"raw": "{{baseUrl}}/api/v1/profiles?firstName=John&lastName=Doe",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"api",
 										"v1",
-										"users"
+										"profiles"
 									],
 									"query": [
 										{
 											"key": "firstName",
-											"value": "С",
-											"description": "(Required) "
+											"value": "John",
+											"description": "First name to search for (partial match supported)"
 										},
 										{
 											"key": "lastName",
-											"value": "П",
-											"description": "(Required) "
+											"value": "Doe",
+											"description": "Last name to search for (partial match supported)"
 										}
 									]
 								},
-								"description": "Retrieves the users for the given user first name and last name, including basic user information."
+								"description": "Search and retrieve user profiles using various filters such as first name, last name"
 							},
 							"response": [
 								{
-									"name": "Users retrieved successfully",
+									"name": "User profiles retrieved successfully",
 									"originalRequest": {
 										"method": "GET",
 										"header": [
@@ -350,23 +350,23 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/api/v1/users?firstName=eu fugiat adipisicing&lastName=eu fugiat adipisicing",
+											"raw": "{{baseUrl}}/api/v1/profiles?firstName=John&lastName=Doe",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
 												"api",
 												"v1",
-												"users"
+												"profiles"
 											],
 											"query": [
 												{
 													"key": "firstName",
-													"value": "eu fugiat adipisicing"
+													"value": "John"
 												},
 												{
 													"key": "lastName",
-													"value": "eu fugiat adipisicing"
+													"value": "Doe"
 												}
 											]
 										}
@@ -381,12 +381,56 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"data\": [\n    {\n      \"id\": -95148265,\n      \"firstName\": \"mollit quis\",\n      \"lastName\": \"enim elit nulla do\",\n      \"username\": \"adipisicing\",\n      \"birthDate\": \"1970-04-21\"\n    },\n    {\n      \"id\": -39245914,\n      \"firstName\": \"et eiusmod do\",\n      \"lastName\": \"sint aliqua fugiat consequat\",\n      \"username\": \"eu sint \",\n      \"birthDate\": \"2000-10-31\"\n    }\n  ],\n  \"errors\": [\n    {\n      \"title\": \"labore nostr\",\n      \"message\": \"magna non est ex aliquip\"\n    },\n    {\n      \"title\": \"esse eu\",\n      \"message\": \"reprehenderit\"\n    }\n  ]\n}"
+									"body": "{\n  \"data\": [\n    {\n      \"id\": 77007987,\n      \"firstName\": \"eiusmod exercitation Ut non\",\n      \"lastName\": \"enim\",\n      \"username\": \"cupidatat in magna\",\n      \"birthDate\": \"1964-11-22\"\n    },\n    {\n      \"id\": 34412347,\n      \"firstName\": \"commodo velit\",\n      \"lastName\": \"cupida\",\n      \"username\": \"veniam laborum id\",\n      \"birthDate\": \"2017-02-26\"\n    }\n  ],\n  \"errors\": [\n    {\n      \"title\": \"elit ullamco velit\",\n      \"message\": \"occaecat nostrud\"\n    },\n    {\n      \"title\": \"non\",\n      \"message\": \"\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "At least one search parameter must be provided",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/profiles?firstName=John&lastName=Doe",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"profiles"
+											],
+											"query": [
+												{
+													"key": "firstName",
+													"value": "John"
+												},
+												{
+													"key": "lastName",
+													"value": "Doe"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"data\": [\n    {\n      \"id\": 77007987,\n      \"firstName\": \"eiusmod exercitation Ut non\",\n      \"lastName\": \"enim\",\n      \"username\": \"cupidatat in magna\",\n      \"birthDate\": \"1964-11-22\"\n    },\n    {\n      \"id\": 34412347,\n      \"firstName\": \"commodo velit\",\n      \"lastName\": \"cupida\",\n      \"username\": \"veniam laborum id\",\n      \"birthDate\": \"2017-02-26\"\n    }\n  ],\n  \"errors\": [\n    {\n      \"title\": \"elit ullamco velit\",\n      \"message\": \"occaecat nostrud\"\n    },\n    {\n      \"title\": \"non\",\n      \"message\": \"\"\n    }\n  ]\n}"
 								}
 							]
 						},
 						{
-							"name": "Get user by ID",
+							"name": "Get user profile by ID",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -396,29 +440,29 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/api/v1/users/:id",
+									"raw": "{{baseUrl}}/api/v1/profiles/:id",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"api",
 										"v1",
-										"users",
+										"profiles",
 										":id"
 									],
 									"variable": [
 										{
 											"key": "id",
-											"value": "21",
-											"description": "(Required) "
+											"value": "123",
+											"description": "(Required) User ID"
 										}
 									]
 								},
-								"description": "Retrieves the user profile for the given user ID, including basic user information."
+								"description": "Retrieves the complete user profile for the given user ID, including profile information, social metrics (followers, following, posts count), and verification status."
 							},
 							"response": [
 								{
-									"name": "Users retrieved successfully",
+									"name": "User profile retrieved successfully",
 									"originalRequest": {
 										"method": "GET",
 										"header": [
@@ -428,21 +472,21 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/api/v1/users/:id",
+											"raw": "{{baseUrl}}/api/v1/profiles/:id",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
 												"api",
 												"v1",
-												"users",
+												"profiles",
 												":id"
 											],
 											"variable": [
 												{
 													"key": "id",
-													"value": "49865591",
-													"description": "(Required) "
+													"value": "123",
+													"description": "(Required) User ID"
 												}
 											]
 										}
@@ -457,10 +501,10 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"data\": {\n    \"id\": 17030081,\n    \"firstName\": \"velit in ea ipsum esse\",\n    \"lastName\": \"sunt ex pariatur proident\",\n    \"username\": \"aliquip nulla do\",\n    \"birthDate\": \"2015-12-31\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"Excepteur amet aliquip\",\n      \"message\": \"dolore\"\n    },\n    {\n      \"title\": \"nulla non\",\n      \"message\": \"consectetur in\"\n    }\n  ]\n}"
+									"body": "{\n  \"data\": {\n    \"id\": 43524468,\n    \"firstName\": \"consectetur velit enim id\",\n    \"lastName\": \"non\",\n    \"username\": \"ut pariatur mollit\",\n    \"birthDate\": \"1997-10-16\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"laboris elit fugiat est\",\n      \"message\": \"quis cillum cons\"\n    },\n    {\n      \"title\": \"in occaecat eiusmo\",\n      \"message\": \"quis aliquip sed in\"\n    }\n  ]\n}"
 								},
 								{
-									"name": "User with the given ID was not found",
+									"name": "User profile with the given ID was not found",
 									"originalRequest": {
 										"method": "GET",
 										"header": [
@@ -470,21 +514,21 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/api/v1/users/:id",
+											"raw": "{{baseUrl}}/api/v1/profiles/:id",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
 												"api",
 												"v1",
-												"users",
+												"profiles",
 												":id"
 											],
 											"variable": [
 												{
 													"key": "id",
-													"value": "49865591",
-													"description": "(Required) "
+													"value": "123",
+													"description": "(Required) User ID"
 												}
 											]
 										}
@@ -499,7 +543,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"data\": {\n    \"id\": 17030081,\n    \"firstName\": \"velit in ea ipsum esse\",\n    \"lastName\": \"sunt ex pariatur proident\",\n    \"username\": \"aliquip nulla do\",\n    \"birthDate\": \"2015-12-31\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"Excepteur amet aliquip\",\n      \"message\": \"dolore\"\n    },\n    {\n      \"title\": \"nulla non\",\n      \"message\": \"consectetur in\"\n    }\n  ]\n}"
+									"body": "{\n  \"data\": {\n    \"id\": 43524468,\n    \"firstName\": \"consectetur velit enim id\",\n    \"lastName\": \"non\",\n    \"username\": \"ut pariatur mollit\",\n    \"birthDate\": \"1997-10-16\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"laboris elit fugiat est\",\n      \"message\": \"quis cillum cons\"\n    },\n    {\n      \"title\": \"in occaecat eiusmo\",\n      \"message\": \"quis aliquip sed in\"\n    }\n  ]\n}"
 								}
 							]
 						}
@@ -509,7 +553,7 @@
 						"bearer": [
 							{
 								"key": "token",
-								"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiaWF0IjoxNzUzMDg5ODk1LCJleHAiOjE3NTMwOTM0OTV9.0EHr7-W05lTHjVtX-YKsWXYOlJGUs9bAN9pwDJFk4Y4",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiaWF0IjoxNzUzMjc2ODQ1LCJleHAiOjE3NTMyODA0NDV9.Yk9U9YYif__NfTRuYw9gmW7r7CjIvNzeRdOi6kAD8MU",
 								"type": "string"
 							}
 						]
