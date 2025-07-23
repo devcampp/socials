@@ -184,9 +184,13 @@ public class UserRepository {
 
             return users;
           });
-    } catch (Exception e) {
-      log.error("Error getting users by first name: {} and last name: {}", firstName, lastName, e);
-      return Collections.emptyList();
+    } catch (DataAccessException e) {
+      log.error(
+          "Database error searching users by first name: {} and last name: {}",
+          firstName,
+          lastName,
+          e);
+      throw new ApiException(MessageKey.INTERNAL_ERROR);
     }
   }
 }

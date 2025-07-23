@@ -4,6 +4,7 @@ import com.devcamp.socials.dto.UserProfileResponse;
 import com.devcamp.socials.enums.MessageKey;
 import com.devcamp.socials.exception.ApiException;
 import com.devcamp.socials.repository.UserRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -25,5 +26,9 @@ public class UserProfileService {
 
     log.debug("Successfully retrieved profile for user ID: {}", userId);
     return profile;
+  }
+
+  public List<UserProfileResponse> searchProfiles(String firstName, String lastName) {
+    return userRepository.searchProfiles(firstName, lastName);
   }
 }

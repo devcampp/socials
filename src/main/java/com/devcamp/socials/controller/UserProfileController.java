@@ -2,6 +2,7 @@ package com.devcamp.socials.controller;
 
 import com.devcamp.socials.dto.Response;
 import com.devcamp.socials.dto.UserProfileResponse;
+import com.devcamp.socials.service.UserProfileService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -57,8 +58,7 @@ public class UserProfileController {
       @Parameter(description = "Last name to search for (partial match supported)", example = "Doe")
           @RequestParam(value = "lastName", required = false)
           String lastName) {
-    List<UserProfileResponse> profiles =
-        service.searchProfiles(firstName, lastName, username, limit);
+    List<UserProfileResponse> profiles = service.searchProfiles(firstName, lastName);
     return ResponseEntity.ok(Response.success(profiles));
   }
 }
