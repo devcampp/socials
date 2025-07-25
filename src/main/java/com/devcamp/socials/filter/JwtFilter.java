@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -30,33 +31,40 @@ public class JwtFilter extends OncePerRequestFilter {
 
     try {
       String authHeader = request.getHeader("Authorization");
-      String token = null;
-      String username = null;
 
-      if (authHeader != null && authHeader.startsWith("Bearer ")) {
-        token = authHeader.substring(7);
-        username = jwtService.extractUsername(token);
+      if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+        filterChain.doFilter(request, response);
+        return;
       }
+
+      String token = authHeader.substring(7);
+      String username = jwtService.extractUsername(token);
 
       if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
         UserDetails userDetails = userService.loadUserByUsername(username);
 
         if (jwtService.isTokenValid(token, userDetails)) {
-          UsernamePasswordAuthenticationToken authentication =
-              new UsernamePasswordAuthenticationToken(
-                  userDetails, null, userDetails.getAuthorities());
-
-          authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
-          SecurityContextHolder.getContext().setAuthentication(authentication);
+          setAuthentication(request, userDetails);
         }
       }
+    } catch (UsernameNotFoundException e) {
+      log.debug("User not found during JWT filtering: {}", e.getMessage());
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+      return;
     } catch (Exception e) {
-      log.error("Unexpected error during JWT filtering: {}", e.getMessage());
+      log.error("Unexpected error during JWT filtering", e);
       response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
       return;
     }
 
     filterChain.doFilter(request, response);
+  }
+
+  private void setAuthentication(HttpServletRequest request, UserDetails userDetails) {
+    UsernamePasswordAuthenticationToken authentication =
+        new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+
+    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+    SecurityContextHolder.getContext().setAuthentication(authentication);
   }
 }

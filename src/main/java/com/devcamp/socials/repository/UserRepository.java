@@ -8,13 +8,14 @@ import com.devcamp.socials.entity.UserEntity;
 import com.devcamp.socials.enums.MessageKey;
 import com.devcamp.socials.exception.ApiException;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -24,15 +25,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @RequiredArgsConstructor
 public class UserRepository {
-  private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+  private final JdbcTemplate jdbcTemplate;
 
   public UserEntity findByUsername(String username) {
     log.debug("Finding user by username: {}", username);
 
     try {
-      return namedParameterJdbcTemplate.query(
+      return jdbcTemplate.query(
           FIND_USER_BY_USERNAME_SQL,
-          Map.of("username", username),
           rs -> {
             UserEntity user = null;
 
@@ -56,14 +56,14 @@ public class UserRepository {
 
               Long roleId = rs.getLong("role_id");
               if (!rs.wasNull()) {
-                RoleEntity role =
-                    RoleEntity.builder().id(roleId).name(rs.getString("role_name")).build();
-                user.getRoles().add(role);
+                user.getRoles()
+                    .add(RoleEntity.builder().id(roleId).name(rs.getString("role_name")).build());
               }
             }
 
             return user;
-          });
+          },
+          username);
 
     } catch (DataAccessException e) {
       log.error("Database error finding user by username: {}", username, e);
@@ -75,14 +75,14 @@ public class UserRepository {
     log.debug("Finding role by name: {}", name);
 
     try {
-      return namedParameterJdbcTemplate.queryForObject(
+      return jdbcTemplate.queryForObject(
           FIND_ROLE_BY_NAME_SQL,
-          Map.of("name", name),
           (rs, rowNum) ->
-              RoleEntity.builder().id(rs.getLong("id")).name(rs.getString("name")).build());
+              RoleEntity.builder().id(rs.getLong("id")).name(rs.getString("name")).build(),
+          name);
 
     } catch (EmptyResultDataAccessException e) {
-      log.debug("No role found with name: {}", name);
+      log.error("No role found with name: {}", name);
       return null;
     } catch (DataAccessException e) {
       log.error("Database error finding role by name: {}", name, e);
@@ -94,36 +94,33 @@ public class UserRepository {
   public void saveUser(UserEntity user) {
     log.debug("Saving user: {}", user.getUsername());
 
-    MapSqlParameterSource userParams =
-        new MapSqlParameterSource()
-            .addValue("firstName", user.getFirstName())
-            .addValue("lastName", user.getLastName())
-            .addValue("username", user.getUsername())
-            .addValue("password", user.getPassword())
-            .addValue("birthDate", user.getBirthDate())
-            .addValue("enabled", user.getEnabled());
-
     KeyHolder keyHolder = new GeneratedKeyHolder();
-    namedParameterJdbcTemplate.update(INSERT_USER_SQL, userParams, keyHolder, new String[] {"id"});
 
-    Number key = keyHolder.getKey();
-    if (key == null) {
-      throw new ApiException(MessageKey.INTERNAL_ERROR);
-    }
+    jdbcTemplate.update(
+        connection -> {
+          PreparedStatement ps =
+              connection.prepareStatement(INSERT_USER_SQL, Statement.RETURN_GENERATED_KEYS);
+          ps.setString(1, user.getFirstName());
+          ps.setString(2, user.getLastName());
+          ps.setString(3, user.getUsername());
+          ps.setString(4, user.getPassword());
+          ps.setDate(5, user.getBirthDate() != null ? Date.valueOf(user.getBirthDate()) : null);
+          ps.setBoolean(6, user.getEnabled());
+          return ps;
+        },
+        keyHolder);
 
-    Long userId = key.longValue();
+    long userId = Objects.requireNonNull(keyHolder.getKey()).longValue();
 
     if (user.getRoles() != null && !user.getRoles().isEmpty()) {
-      List<MapSqlParameterSource> batchParams = new ArrayList<>();
-
-      for (RoleEntity role : user.getRoles()) {
-        MapSqlParameterSource roleParams =
-            new MapSqlParameterSource().addValue("userId", userId).addValue("roleId", role.getId());
-        batchParams.add(roleParams);
-      }
-
-      namedParameterJdbcTemplate.batchUpdate(
-          INSERT_USER_ROLE_SQL, batchParams.toArray(new MapSqlParameterSource[0]));
+      jdbcTemplate.batchUpdate(
+          INSERT_USER_ROLE_SQL,
+          user.getRoles(),
+          user.getRoles().size(),
+          (ps, role) -> {
+            ps.setLong(1, userId);
+            ps.setLong(2, role.getId());
+          });
     }
   }
 
@@ -131,9 +128,8 @@ public class UserRepository {
     log.debug("Finding user by id: {}", id);
 
     try {
-      return namedParameterJdbcTemplate.queryForObject(
+      return jdbcTemplate.queryForObject(
           FIND_USER_BY_ID_SQL,
-          Map.of("id", id),
           (rs, rowNum) ->
               UserProfileResponse.builder()
                   .id(rs.getLong("id"))
@@ -141,10 +137,11 @@ public class UserRepository {
                   .firstName(rs.getString("first_name"))
                   .lastName(rs.getString("last_name"))
                   .birthDate(
-                      Optional.ofNullable(rs.getDate("birth_date"))
-                          .map(Date::toLocalDate)
-                          .orElse(null))
-                  .build());
+                      rs.getDate("birth_date") != null
+                          ? rs.getDate("birth_date").toLocalDate()
+                          : null)
+                  .build(),
+          id);
     } catch (EmptyResultDataAccessException e) {
       log.debug("No user found with id: {}", id);
       return null;
@@ -158,32 +155,21 @@ public class UserRepository {
     log.debug("Getting users by first name: {} and last name: {}", firstName, lastName);
 
     try {
-      MapSqlParameterSource params =
-          new MapSqlParameterSource()
-              .addValue("firstName", firstName + "%")
-              .addValue("lastName", lastName + "%");
-
-      return namedParameterJdbcTemplate.query(
+      return jdbcTemplate.query(
           SEARCH_USERS_SQL,
-          params,
-          rs -> {
-            List<UserProfileResponse> users = new ArrayList<>();
-            while (rs.next()) {
-              users.add(
-                  UserProfileResponse.builder()
-                      .id(rs.getLong("id"))
-                      .username(rs.getString("username"))
-                      .firstName(rs.getString("first_name"))
-                      .lastName(rs.getString("last_name"))
-                      .birthDate(
-                          Optional.ofNullable(rs.getDate("birth_date"))
-                              .map(Date::toLocalDate)
-                              .orElse(null))
-                      .build());
-            }
-
-            return users;
-          });
+          (rs, rowNum) ->
+              UserProfileResponse.builder()
+                  .id(rs.getLong("id"))
+                  .username(rs.getString("username"))
+                  .firstName(rs.getString("first_name"))
+                  .lastName(rs.getString("last_name"))
+                  .birthDate(
+                      rs.getDate("birth_date") != null
+                          ? rs.getDate("birth_date").toLocalDate()
+                          : null)
+                  .build(),
+          firstName + "%",
+          lastName + "%");
     } catch (DataAccessException e) {
       log.error(
           "Database error searching users by first name: {} and last name: {}",

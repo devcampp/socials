@@ -29,6 +29,7 @@ app:
     secret: ${APP_JWT_SECRET}
     expiration: ${APP_JWT_EXPIRATION}
 
-logging:
-  level:
-    com.devcamp.socials: DEBUG
+#logging:
+#  level:
+#    com.devcamp.socials: DEBUG
+
