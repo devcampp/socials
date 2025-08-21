@@ -1,0 +1,599 @@
+{
+	"info": {
+		"_postman_id": "45738119-aeb73f05-d010-4e04-ba15-dc4a5d7bed79",
+		"name": "Socials OpenAPI definition",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api/v1",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "User Sign-Up",
+							"id": "45738119-fbcbcfee-0e3a-427c-a716-b6de5a662c12",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"birthDate\": \"2005-12-09\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"username\": \"string\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/auth/sign-up",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"sign-up"
+									]
+								},
+								"description": "Register a new user in the system"
+							},
+							"response": [
+								{
+									"id": "45738119-1a92af2c-afc4-4542-b229-a478101779b2",
+									"name": "User successfully registered",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"birthDate\": \"2005-12-09\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"username\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/auth/sign-up",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"sign-up"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": ""
+								},
+								{
+									"id": "45738119-fb951c6f-476b-4622-8be5-50565d8ce521",
+									"name": "Validation error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"birthDate\": \"2005-12-09\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"username\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/auth/sign-up",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"sign-up"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "User Sign-In",
+							"id": "45738119-2aee5173-cbc6-4f2a-a9cc-9e4579493300",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"password\": \"string\",\n  \"username\": \"string\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/auth/sign-in",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"sign-in"
+									]
+								},
+								"description": "Authenticate user and return JWT token"
+							},
+							"response": [
+								{
+									"id": "45738119-8549d154-68c4-4c33-b356-d46abf556660",
+									"name": "Successfully authenticated",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"password\": \"string\",\n  \"username\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/auth/sign-in",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"sign-in"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"data\": {\n    \"token\": \"string\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"title\": \"st\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								},
+								{
+									"id": "45738119-085710b8-a421-4b4f-9577-ab2a7d5877a7",
+									"name": "Validation error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"password\": \"string\",\n  \"username\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/auth/sign-in",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"sign-in"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"data\": {\n    \"token\": \"string\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"title\": \"st\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								},
+								{
+									"id": "45738119-5b143b62-3be6-43cb-9b7f-ba7c7a3f0d39",
+									"name": "Invalid username or password.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"password\": \"string\",\n  \"username\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/auth/sign-in",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"sign-in"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"data\": {\n    \"token\": \"string\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"title\": \"st\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					],
+					"id": "45738119-a85d01cb-9a0b-409d-ac0e-692b7596bd8b"
+				},
+				{
+					"name": "profiles",
+					"item": [
+						{
+							"name": "Search user profiles with filters",
+							"id": "45738119-b61b42fa-e661-4ffb-85fb-ddc0eae541da",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/profiles?firstName=John&lastName=Doe",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"profiles"
+									],
+									"query": [
+										{
+											"key": "firstName",
+											"value": "John",
+											"description": "First name to search for (partial match supported)"
+										},
+										{
+											"key": "lastName",
+											"value": "Doe",
+											"description": "Last name to search for (partial match supported)"
+										}
+									]
+								},
+								"description": "Search and retrieve user profiles using various filters such as first name, last name"
+							},
+							"response": [
+								{
+									"id": "45738119-2b775ca9-e102-4036-9f15-105c4c04a16b",
+									"name": "User profiles retrieved successfully",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/profiles?firstName=John&lastName=Doe",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"profiles"
+											],
+											"query": [
+												{
+													"key": "firstName",
+													"value": "John"
+												},
+												{
+													"key": "lastName",
+													"value": "Doe"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"data\": [\n    {\n      \"id\": 3251,\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"username\": \"string\",\n      \"birthDate\": \"1957-12-01\"\n    },\n    {\n      \"id\": 8903,\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"username\": \"string\",\n      \"birthDate\": \"2001-06-11\"\n    }\n  ],\n  \"errors\": [\n    {\n      \"title\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"title\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								},
+								{
+									"id": "45738119-f641a18e-8075-4c01-ae33-b80c70e2fd78",
+									"name": "At least one search parameter must be provided",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/profiles?firstName=John&lastName=Doe",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"profiles"
+											],
+											"query": [
+												{
+													"key": "firstName",
+													"value": "John"
+												},
+												{
+													"key": "lastName",
+													"value": "Doe"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"data\": [\n    {\n      \"id\": 3251,\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"username\": \"string\",\n      \"birthDate\": \"1957-12-01\"\n    },\n    {\n      \"id\": 8903,\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"username\": \"string\",\n      \"birthDate\": \"2001-06-11\"\n    }\n  ],\n  \"errors\": [\n    {\n      \"title\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"title\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Get user profile by ID",
+							"id": "45738119-adcdc7b5-e045-4503-9b0f-b11ea2914b9d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/profiles/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"profiles",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "eaef8c81-d816-4567-8a27-480861232262",
+											"key": "id",
+											"value": "123",
+											"description": "(Required) User ID"
+										}
+									]
+								},
+								"description": "Retrieves the complete user profile for the given user ID, including profile information, social metrics (followers, following, posts count), and verification status."
+							},
+							"response": [
+								{
+									"id": "45738119-2a5e515d-45aa-4ac9-a43b-198926ab5fe9",
+									"name": "User profile retrieved successfully",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/profiles/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"profiles",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "123",
+													"description": "(Required) User ID"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"data\": {\n    \"id\": 5973,\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"username\": \"string\",\n    \"birthDate\": \"1962-03-26\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"title\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								},
+								{
+									"id": "45738119-65d29607-7a2e-4dc3-b9f7-b4ea72ca3783",
+									"name": "User profile with the given ID was not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/profiles/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"profiles",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "123",
+													"description": "(Required) User ID"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"data\": {\n    \"id\": 5973,\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"username\": \"string\",\n    \"birthDate\": \"1962-03-26\"\n  },\n  \"errors\": [\n    {\n      \"title\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"title\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					],
+					"id": "45738119-a35b8d25-d11c-4ec0-8eef-da5a2c097686"
+				}
+			],
+			"id": "45738119-51d1d97c-1aa2-42ea-b738-d560e8a94b36"
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
