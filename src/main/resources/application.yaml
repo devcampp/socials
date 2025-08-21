@@ -8,21 +8,28 @@ spring:
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
 
-server:
-  port: ${SERVER_PORT:8080}
-
 management:
   endpoints:
     web:
       exposure:
         include: health
+      base-path: /status
+
+springdoc:
+  api-docs:
+    path: /docs/v1/api-docs
+  swagger-ui:
+    path: /docs/v1/swagger-ui.html
+    doc-expansion: none
+    tags-sorter: alpha
+    default-model-expand-depth: -1
+    default-models-expand-depth: -1
 
 app:
   white-list:
     - /error
     - /actuator/health
-    - /swagger-ui/**
-    - /v3/api-docs/**
+    - /docs/**
     - /api/v1/auth/sign-in
     - /api/v1/auth/sign-up
   jwt:
@@ -32,4 +39,7 @@ app:
 #logging:
 #  level:
 #    com.devcamp.socials: DEBUG
+
+server:
+  port: ${SERVER_PORT:8080}
 
