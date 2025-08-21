@@ -153,7 +153,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"password\": \"string\",\n  \"username\": \"string\"\n}",
+									"raw": "{\n  \"password\": \"qwe\",\n  \"username\": \"user_0000001\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
