@@ -583,7 +583,41 @@
 							]
 						}
 					],
-					"id": "45738119-a35b8d25-d11c-4ec0-8eef-da5a2c097686"
+					"id": "45738119-a35b8d25-d11c-4ec0-8eef-da5a2c097686",
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyXzAwMDAwMDEiLCJpYXQiOjE3NTU3NjI5NTAsImV4cCI6MTc1NTc2NjU1MH0._WOixPLD72xdCE24uau3sO_hJ_LepGx3x8sP333GsAE",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "cc27822d-8e3d-48b7-86ff-873a0841cc1d",
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "3ea42c17-cc66-4417-81c8-5d01c4dbe30f",
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						}
+					]
 				}
 			],
 			"id": "45738119-51d1d97c-1aa2-42ea-b738-d560e8a94b36"
