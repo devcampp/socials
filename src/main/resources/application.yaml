@@ -17,9 +17,9 @@ management:
 
 springdoc:
   api-docs:
-    path: /docs/v1/api-docs
+    path: /docs/v1/api
   swagger-ui:
-    path: /docs/v1/swagger-ui.html
+    path: /docs/v1/swagger-ui
     doc-expansion: none
     tags-sorter: alpha
     default-model-expand-depth: -1
@@ -38,6 +38,7 @@ app:
 
 #logging:
 #  level:
+#    root: trace
 #    com.devcamp.socials: DEBUG
 
 server:
