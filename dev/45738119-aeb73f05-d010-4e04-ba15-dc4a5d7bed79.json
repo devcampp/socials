@@ -623,10 +623,38 @@
 			"id": "45738119-51d1d97c-1aa2-42ea-b738-d560e8a94b36"
 		}
 	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "e606a786-20a6-452b-9a79-935a2c1f92ff",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "bbc74e31-07a9-45d7-9946-83528bdcf202",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:8080",
+			"value": "http://localhost:8080"
+		},
+		{
+			"key": "jwtSecret",
+			"value": "vU1sDxuKf2M5uz6HnLxkAJxRBo1gR2pPplW6ZbA5oHE=",
 			"type": "string"
 		}
 	]
