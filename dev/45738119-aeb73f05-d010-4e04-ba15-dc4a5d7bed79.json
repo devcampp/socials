@@ -623,11 +623,28 @@
 			"id": "45738119-51d1d97c-1aa2-42ea-b738-d560e8a94b36"
 		}
 	],
-	"variable": [
+	"event": [
 		{
-			"key": "baseUrl",
-			"value": "http://localhost:8080",
-			"type": "string"
+			"listen": "prerequest",
+			"script": {
+				"id": "345b2ffc-c290-4208-b975-0a2005dde0ad",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e56983a7-7a58-4d1c-b34a-3d8764f86b3a",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
